@@ -54,9 +54,9 @@ def parse_file(file, main_card_ids, extra_card_ids):
             continue
         else:
             if is_main:
-                main_card_ids.append(line)
+                main_card_ids.append(line.strip())
             else:
-                extra_card_ids.append(line)
+                extra_card_ids.append(line.strip())
 
 def remove_excess_triplicates(card_ids):
 
@@ -77,11 +77,11 @@ def create_new_ydk_file(main_card_dict, extra_card_dict, file_name):
     file.write('#main\n')
     for card, count in main_card_dict.items():
         for i in range(count):
-            file.write(card)
+            file.write(card + '\n')
     file.write('#extra\n')
     for card, count in extra_card_dict.items():
         for i in range(count):
-            file.write(card)
+            file.write(card + '\n')
     file.write('!side\n')
 
 if __name__ == '__main__':
